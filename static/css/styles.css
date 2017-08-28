@@ -45,13 +45,13 @@ table {
 
 /* Styles */
 
+*, *:before, *:after {
+  box-sizing: border-box;
+}
 html, body {
   height: 100%;
   padding: 0;
   margin: 0;
-}
-*, *:before, *:after {
-  box-sizing: border-box;
 }
 #map { 
   height: 100%; 
@@ -67,4 +67,8 @@ html, body {
 #incident-form label, #incident-form input{ 
   display: block; 
   margin-bottom: 10px;
+}
+.error {
+  color: red;
+  margin-bottom: 15px;
 }

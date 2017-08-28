@@ -47,6 +47,10 @@ $(document).ready(function () {
 
   // Add Markers
   function addMarkers(instances) {
+    if (instances.error) {
+     $('.error').text(instances.error);
+     return;
+    }
     for (var i=0; i < instances.length; i++) {
       var incident = instances[i];
       var marker = L.marker(
