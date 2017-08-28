@@ -7,7 +7,9 @@
   <title>Incidents Map</title>
   <meta name="description" content="Incidents Map">
   <meta name="author" content="SitePoint">
-
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+        integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+        crossorigin=""/>
   <link rel="stylesheet" href="/static/css/styles.css">
 
   <!--[if lt IE 9]>
@@ -16,7 +18,17 @@
 </head>
 
 <body>
+  <div id="map"></div>
+  <div id="sidebar">
+    <form enctype="multipart/form-data" action="/" id="incident-form" method="POST">
+      <label for="dataField">Incident File: </label>
+      <input name="incidentFile" id="incident-file" type="file" />
+      <input type="submit" />
+    </form>
+  </div>
+  <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+          integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+          crossorigin=""></script>
   <script src="/static/js/scripts.js"></script>
-  Hello, World!
 </body>
 </html>
