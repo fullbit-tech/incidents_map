@@ -1,5 +1,6 @@
 import json
 from flask import (Flask, render_template, request, jsonify)
+from flask_pymongo import PyMongo
 
 from libs.weather import get_weather
 from libs.parcel import get_parcel
@@ -7,6 +8,7 @@ from libs.parcel import get_parcel
 
 
 app = Flask(__name__)
+mongo = PyMongo(app)
 
 
 @app.route('/', methods=['GET'])
@@ -16,7 +18,6 @@ def index():
 
 @app.route('/incidents', methods=['GET', 'POST'])
 def incidents():
-    incidents = []
     if request.method == 'POST' and 'incident-file' in request.files:
         try:
             incident = json.loads(request.files['incident-file'].read())
@@ -27,7 +28,8 @@ def incidents():
             )['data']['weather'][0]
             incident['parcel'] = get_parcel(
                 incident['address']['address_line1'])
-            incidents.append(incident)
         except (TypeError, ValueError):
             return jsonify({'error': 'Unable to parse incident data'})
+        mongo.db.incidents.insert_one(incident)
+    incidents = list(mongo.db.incidents.find({}, {'_id': False}))
     return jsonify(incidents)
