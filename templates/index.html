@@ -20,12 +20,15 @@
 <body>
   <div id="map"></div>
   <div id="sidebar">
-    <form enctype="multipart/form-data" action="/" id="incident-form" method="POST">
+    <form enctype="multipart/form-data" id="incident-form" method="POST">
       <label for="dataField">Incident File: </label>
-      <input name="incidentFile" id="incident-file" type="file" />
+      <input name="incident-file" id="incident-file" type="file" />
       <input type="submit" />
     </form>
   </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+          integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+          crossorigin="anonymous"></script>
   <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
           integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
           crossorigin=""></script>
