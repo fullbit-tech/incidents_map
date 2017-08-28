@@ -1,8 +1,8 @@
 import json
 from flask import (Flask, render_template, request, jsonify)
 
-from weather import get_weather
-from parcel import get_parcel
+from libs.weather import get_weather
+from libs.parcel import get_parcel
 
 
 
