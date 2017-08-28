@@ -2,6 +2,9 @@ import requests
 
 
 def get_weather(city, state, when):
+    """Returns weather data from api.worldweatheronline.com
+       for a given city, state, and time.
+    """
     api_url = ('http://api.worldweatheronline.com/premium/v1/'
                 'past-weather.ashx')
 

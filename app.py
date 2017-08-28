@@ -6,18 +6,19 @@ from libs.weather import get_weather
 from libs.parcel import get_parcel
 
 
-
 app = Flask(__name__)
 mongo = PyMongo(app)
 
 
 @app.route('/', methods=['GET'])
 def index():
+    """Render index template"""
     return render_template('index.html')
 
 
 @app.route('/incidents', methods=['GET', 'POST'])
 def incidents():
+    """List incidents and allows users to add incidents"""
     if request.method == 'POST' and 'incident-file' in request.files:
         try:
             incident = json.loads(request.files['incident-file'].read())
