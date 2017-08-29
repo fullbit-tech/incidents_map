@@ -1,7 +1,7 @@
 import requests
 
 
-def get_parcel(address):
+def get_parcel(lon, lat):
     """Returns parcel data for a provided address.
        Will return an empty dict if no data was found
        the first result if more than one is returned
@@ -14,7 +14,8 @@ def get_parcel(address):
         params={
             'geometryType': 'esriGeometryPoint',
             'spatialRel': 'esriSpatialRelIntersects',
-            'where': 'LOWER(MailAddress)=\'{}\''.format(address.lower()),
+            'inSR': 4326,
+            'geometry': '{lon},{lat}'.format(lon=lon, lat=lat),
             'returnCountOnly': 'false',
             'returnIdsOnly': 'false',
             'returnGeometry': 'true',

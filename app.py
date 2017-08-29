@@ -28,9 +28,10 @@ def incidents():
                 incident['description']['event_opened'],
             )['data']['weather'][0]
             incident['parcel'] = get_parcel(
-                incident['address']['address_line1'])
+                incident['address']['longitude'],
+                incident['address']['latitude'])
         except (TypeError, ValueError):
             return jsonify({'error': 'Unable to parse incident data'})
-        mongo.db.incidents.insert_one(incident)
+        mongo.db.incidents.insert(incident, check_keys=False)
     incidents = list(mongo.db.incidents.find({}, {'_id': False}))
     return jsonify(incidents)
